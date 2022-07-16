@@ -4,14 +4,23 @@ namespace PasswordGenerator
 {
     public class Password
     {
-        public static string GetRandomPassword(int length, bool useLowerAlpha, bool useUpperAlpha, bool useSymbol)
+        public static string GetRandomPassword(int length,bool useNumeric, bool useLowerAlpha, bool useUpperAlpha, bool useSymbol)
         {
+            if(!useNumeric && !useLowerAlpha && !useUpperAlpha && !useSymbol || length < 1)
+            {
+                throw new InvalidOperationException("The length must be greater than 0 and at least one character type (Numeric, LowerAlpha, UpperAlpha or Symbol) must be used");
+            }
             const string lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
             const string upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             const string numbers = "0123456789";
             const string symbols = "!@#$%^&*()_-+={}[]|:;<>,./?'";
 
-            string chars = numbers;
+            string chars = "";
+
+            if (useNumeric)
+            {
+                chars += numbers;
+            }
             if (useLowerAlpha)
             {
                 chars += lowerCaseLetters;
