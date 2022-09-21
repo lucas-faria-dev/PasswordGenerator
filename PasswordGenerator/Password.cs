@@ -5,6 +5,15 @@ namespace PasswordGenerator
     public class Password
     {
         public static string GetRandomPassword(int length,bool useNumeric, bool useLowerAlpha, bool useUpperAlpha, bool useSymbol)
+        /// <summary>
+        /// Generates a random password
+        /// </summary>
+        /// <param name="length">Password's length</param>
+        /// <param name="useLowerAlpha">If the generated password must have lower case characters</param>
+        /// <param name="useUpperAlpha">If the  generated password must have upper case characters</param>
+        /// <param name="useSymbol">If the generated password must have symbol</param>
+        /// <returns>Random string</returns>
+        public static string GetRandomPassword(int length, bool useLowerAlpha, bool useUpperAlpha, bool useSymbol)
         {
             if(!useNumeric && !useLowerAlpha && !useUpperAlpha && !useSymbol || length < 1)
             {
